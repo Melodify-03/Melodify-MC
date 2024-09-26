@@ -1,0 +1,60 @@
+document.addEventListener('DOMContentLoaded', () => {
+    const loginModal = document.getElementById('login-modal');
+    const usernameInput = document.getElementById('username-input');
+    const loginBtn = document.getElementById('login-btn');
+    const logoutBtn = document.getElementById('logout-btn');
+    const userInfo = document.getElementById('user-info');
+    const usernameDisplay = document.getElementById('username');
+    
+    // Mostrar modal de inicio de sesión al cargar
+    loginModal.style.display = 'flex';
+
+    // Manejar inicio de sesión
+    loginBtn.addEventListener('click', () => {
+        const username = usernameInput.value.trim();
+        if (username) {
+            usernameDisplay.textContent = username;
+            loginModal.style.display = 'none';
+        }
+    });
+
+    // Manejar cierre de sesión
+    logoutBtn.addEventListener('click', () => {
+        usernameDisplay.textContent = '';
+        loginModal.style.display = 'flex';
+        audioPlayer.pause();
+        audioPlayer.src = '';
+        trackTitle.textContent = 'Selecciona una canción';
+        albumCover.style.backgroundImage = 'none';
+    });
+
+    const audioPlayer = document.getElementById('audio-player');
+    const albumCover = document.getElementById('album-cover');
+    const trackTitle = document.getElementById('track-title');
+    const trackItems = document.querySelectorAll('.track-item');
+    const customMusicInput = document.getElementById('custom-music');
+
+    // Reproducir canción al hacer clic
+    trackItems.forEach(item => {
+        item.addEventListener('click', (e) => {
+            const trackSrc = e.target.getAttribute('data-src');
+            const coverSrc = e.target.getAttribute('data-cover');
+            audioPlayer.src = trackSrc;
+            albumCover.style.backgroundImage = `url(${coverSrc})`;
+            trackTitle.textContent = e.target.textContent;
+            audioPlayer.play();
+        });
+    });
+
+    // Manejar carga de música personalizada
+    customMusicInput.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            const objectURL = URL.createObjectURL(file);
+            audioPlayer.src = objectURL;
+            albumCover.style.backgroundImage = 'none'; // Sin portada para canciones personalizadas
+            trackTitle.textContent = file.name;
+            audioPlayer.play();
+        }
+    });
+});

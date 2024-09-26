@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App de Música</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-animation"></div>
+
+    <div class="container">
+        <header>
+            <div class="logo">
+                <h1>MiMúsica</h1>
+            </div>
+            <div id="user-info">
+                <span id="username"></span>
+                <button id="logout-btn">Cerrar Sesión</button>
+            </div>
+        </header>
+
+        <main>
+            <div id="music-player">
+                <div class="album-cover" id="album-cover"></div>
+                <h2 id="track-title">Selecciona una canción</h2>
+                <audio controls id="audio-player">
+                    <source src="" type="audio/mp3">
+                </audio>
+            </div>
+
+            <div id="track-list">
+                <h3>Lista de canciones</h3>
+                <ul>
+                    <li class="track-item" data-src="musica/song1.mp3" data-cover="img/cover1.jpg">Blinding Lights - The Weeknd</li>
+                    <li class="track-item" data-src="musica/song2.mp3" data-cover="img/cover2.jpg">Levitating - Dua Lipa</li>
+                    <li class="track-item" data-src="musica/song3.mp3" data-cover="img/cover3.jpg">Watermelon Sugar - Harry Styles</li>
+                    <li class="track-item" data-src="musica/song4.mp3" data-cover="img/cover4.jpg">Peaches - Justin Bieber</li>
+                </ul>
+                <h3>Sube tu propia música</h3>
+                <input type="file" id="custom-music" accept="audio/*">
+            </div>
+
+            <!-- Espacio para anuncios -->
+            <div class="ads-section">
+                <h3>Anuncios:</h3>
+                <div class="ad">
+                    <p>Publicidad aquí</p>
+                    <!-- Aquí puedes incluir el código de tus anuncios (ej. Google AdSense) -->
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 MiMúsica</p>
+        </footer>
+    </div>
+
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <h2>Iniciar Sesión</h2>
+            <input type="text" id="username-input" placeholder="Nombre de usuario">
+            <button id="login-btn">Iniciar Sesión</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
